@@ -24,9 +24,7 @@ const HealthCheckEntry: React.FC<{
         <>
           <p>
             Health:{" "}
-            <strong>
-              {entry.healthCheckRating === 0 ? 'Bad': entry.healthCheckRating === 3 ? '':''}
-            </strong>
+            {entry.healthCheckRating}
           </p>
         </>
       )}

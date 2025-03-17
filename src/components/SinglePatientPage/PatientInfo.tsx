@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Typography,
   Card,
   CardContent,
-  Button,
-  CardActions,
   Box,
 } from "@mui/material";
 import { Diagnosis, PatientEntry } from "../../types";
 import FemaleIcon from "@mui/icons-material/Female";
 import MaleIcon from "@mui/icons-material/Male";
-import diagnoseService from "../../services/diagnoses";
 import EntryDetails from "./details";
 interface Props {
   patient: PatientEntry;
+  diagnoses:Diagnosis[]
 }
 
-const PatientInfo = ({ patient }: Props) => {
-  const [diagnoses, setDiagnoses] = useState<Diagnosis[]>([]);
-
-  useEffect(() => {
-    const fetchDiagnoses = async () => {
-      const diagnoses = await diagnoseService.getAll();
-      setDiagnoses(diagnoses);
-    };
-
-    fetchDiagnoses();
-  }, []);
+const PatientInfo = ({ patient,diagnoses }: Props) => {
 
   return (
     <React.Fragment>
@@ -60,9 +48,6 @@ const PatientInfo = ({ patient }: Props) => {
               ))
             : "No entries"}
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
     </React.Fragment>
   );
